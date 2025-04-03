@@ -1,0 +1,238 @@
+/* Basic Reset & Defaults */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7f6; /* Light background */
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff; /* White container background */
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50; /* Dark blue */
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #34495e; /* Slightly lighter blue */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 5px;
+}
+
+/* Layout */
+.app-layout {
+    display: flex;
+    gap: 30px;
+}
+
+.inputs {
+    flex: 1; /* Takes up 1 part of the space */
+    min-width: 300px; /* Prevent inputs getting too squished */
+}
+
+.outputs {
+    flex: 2; /* Takes up 2 parts of the space */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Card Style */
+.card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Input Group Styling */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.input-group input[type="number"],
+.input-group input[type="range"] {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.input-group input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Slider Styling */
+.input-group input[type="range"] {
+    cursor: pointer;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    appearance: none; /* Override default look */
+    -webkit-appearance: none;
+}
+/* Style slider thumb */
+.input-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 20px; /* Set a specific slider handle width */
+  height: 20px; /* Slider handle height */
+  background: #3498db; /* Blue */
+  border-radius: 50%;
+  cursor: pointer; /* Cursor on hover */
+}
+.input-group input[type="range"]::-moz-range-thumb {
+  width: 20px; /* Set a specific slider handle width */
+  height: 20px; /* Slider handle height */
+  background: #3498db; /* Blue */
+  border-radius: 50%;
+  cursor: pointer; /* Cursor on hover */
+  border: none; /* Remove border in Firefox */
+}
+
+
+.input-group .value-display {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* Frequency Radio Buttons */
+.frequency-group div {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.frequency-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Summary Section */
+.summary {
+    background-color: #ecf0f1; /* Light gray-blue */
+    border-left: 5px solid #3498db; /* Blue accent */
+}
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+.summary-item span:first-child {
+    color: #555;
+}
+.summary-item strong {
+    color: #2c3e50;
+    font-size: 1.3em; /* Make final balance stand out */
+}
+
+/* Chart Container */
+.chart-container {
+    position: relative; /* Needed for Chart.js responsiveness */
+    height: 350px; /* Adjust as needed */
+    padding-bottom: 10px; /* Space for labels */
+}
+
+/* Table Styling */
+.table-container {
+    overflow: hidden; /* Hide overflow initially */
+}
+.table-scroll {
+    max-height: 400px; /* Make table scrollable if long */
+    overflow-y: auto;
+}
+
+#projectionTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#projectionTable th,
+#projectionTable td {
+    padding: 10px 12px;
+    text-align: right;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#projectionTable th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+    color: #333;
+    position: sticky; /* Make header sticky during scroll */
+    top: 0;
+    z-index: 1;
+}
+#projectionTable th:first-child,
+#projectionTable td:first-child {
+    text-align: left;
+}
+
+#projectionTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#projectionTable tbody tr:hover {
+    background-color: #eaf2f8; /* Light blue hover */
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .app-layout {
+        flex-direction: column;
+    }
+    .inputs, .outputs {
+        flex: none; /* Reset flex basis */
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    .summary-item {
+        font-size: 1em;
+    }
+     .summary-item strong {
+        font-size: 1.1em;
+    }
+     #projectionTable th,
+    #projectionTable td {
+        padding: 8px 6px;
+        font-size: 0.9em;
+    }
+}
